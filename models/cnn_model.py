@@ -1,10 +1,20 @@
 import tensorflow as tf
 import numpy as np
 import os
+import traceback
+import streamlit as st
 
-# Load model once
+
 model_path = os.path.join(os.path.dirname(__file__), '..', 'disease_classifier.h5')
-model = tf.keras.models.load_model(model_path)
+
+try:
+    st.write(f"Loading model from: {model_path}")
+    model = tf.keras.models.load_model(model_path)
+    st.success("✅ Model loaded successfully!")
+except Exception as e:
+    st.error("❌ Error loading model:")
+    st.error(str(e))
+    st.text(traceback.format_exc())
 class_names = ['COVID-19', 'Invalid', 'Normal', 'Pneumonia', 'Tuberculosis']
 
 def predict(image_array):
