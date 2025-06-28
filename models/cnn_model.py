@@ -13,6 +13,8 @@ def load_model():
     return tf.keras.models.load_model(model_path)
 
 def predict(image_array):
+    if not hasattr(predict, "model"):
+        predict.model = load_model()
     image_array = np.expand_dims(image_array, axis=0)  # Batch dimension
     prediction = model.predict(image_array)
     class_idx = np.argmax(prediction, axis=1)[0]
