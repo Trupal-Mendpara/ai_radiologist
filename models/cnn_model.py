@@ -4,11 +4,13 @@ import os
 import traceback
 import streamlit as st
 
-model_path = os.path.join(os.path.dirname(__file__), '..', 'disease_classifier.h5')
-if not os.path.exists(model_path):
-    raise FileNotFoundError(f"Model file not found at {model_path}")
-model = tf.keras.models.load_model(model_path)
 class_names = ['COVID-19', 'Invalid', 'Normal', 'Pneumonia', 'Tuberculosis']
+@st.cache_resource(show_spinner="Loading model...")
+def load_model():
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'disease_classifier.h5')
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found at {model_path}")
+    return tf.keras.models.load_model(model_path)
 
 def predict(image_array):
     image_array = np.expand_dims(image_array, axis=0)  # Batch dimension
