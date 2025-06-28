@@ -5,6 +5,8 @@ import traceback
 import streamlit as st
 
 model_path = os.path.join(os.path.dirname(__file__), '..', 'disease_classifier.h5')
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found at {model_path}")
 model = tf.keras.models.load_model(model_path)
 class_names = ['COVID-19', 'Invalid', 'Normal', 'Pneumonia', 'Tuberculosis']
 
