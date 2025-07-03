@@ -1,0 +1,11 @@
+tensorflow==2.15.0
+numpy
+streamlit
+langchain
+langchain_groq
+langchain_core
+langchain_community
+dotenv
+fpdf
+opencv-python-headless
+matplotlib

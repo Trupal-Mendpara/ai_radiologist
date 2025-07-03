@@ -1,0 +1,29 @@
+/* style.css */
+body {
+    background-color: #f4f4f4;
+}
+
+.title {
+    text-align: center;
+    font-size: 60px;
+    color: #2c3e50;
+    animation: fadeIn 2s ease-in-out;
+    font-weight: bold;
+}
+
+.h1 {
+
+    font-size: 30px;
+    color: #34495e;
+    animation: fadeIn 3s ease-in-out;
+    font-weight: 900;
+}
+
+.h2 {
+
+    font-size: 20px;
+    color: #34495e;
+    animation: fadeIn 3s ease-in-out;
+    font-weight: 900;
+    font-style: italic;
+}
